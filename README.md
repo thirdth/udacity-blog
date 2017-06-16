@@ -5,7 +5,7 @@ for **Full Stack Web Developer Nanodegree Program** from **Udacity**
 ## Usage instructions:
 #### Running through GAE:
 1. This program is intended to be used with Google App Engine.
-2. It can be accessed [here](https://bigblog-170019.appspot.com/blog)
+2. It can be accessed [here](https://udacity-blog-glaser.appspot.com/blog)
 3. The user may read the blog website without registering, but the user will need to register in order to create posts, or interact with posts that have already been created.
 
 #### Running independently of GAE:
