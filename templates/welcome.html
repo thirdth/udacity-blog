@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+<!-- this block content gets placed into base.html -->
+{% block content %}
+  <div class="col-sm-12 text-center">
+    <h3 class="mb-1 mt-2">Welcome, {{username}}!</h3>
+    <p class="text-muted"> Here are some of your most recent posts:</p>
+  </div>
+  <hr>
+<!-- renders the posts that were created by the current user -->
+    {% for p in posts %}
+      {% if p.author == username %}
+          <div class="row">
+            <div class="col-sm-12">
+            {{ p.render() | safe }}
+            </div>
+          </div>
+      {% endif %}
+    {% endfor %}
+
+{% endblock %}

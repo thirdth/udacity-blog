@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+<!-- this block content gets placed into base.html -->
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <p class="text-danger mb-0">{{error}}</p>
+  </div>
+  <div class="col-md-6 text-right pb-2 pr-3 pt-0">
+    {% if post.author == name %} <!-- allows only the author of a post to edit it. -->
+      <a class="text-success font-weight-bold" href="editpost/{{post_id}}">Edit Post</a>
+    {% else %}
+    {% endif %}
+  </div>
+</div>
+  {{post.render() | safe}} <!-- places post into html -->
+  <div class="row mt-2">
+    <div class="col-sm-6 text-left">
+      <p class="text-primary font-weight-bold ml-3">Likes: {{count}}</p>
+
+    </div>
+    <div class="col-sm-6 text-right">
+        {% if likeid == True %} <!-- check is user has already liked this post -->
+          <form method="post">
+            <input type="hidden" name="unlikes" value="y">
+            <button type="submit"  class="btn btn-outline-primary"><li class="iconicstroke-x" data-text="x">  | Unlike</button>
+          </form>
+        {% else %}
+          <form method="post">
+            <input type="hidden" name="likes" value="{{post.author}}">
+            <button type="submit" class="btn btn-outline-primary"><li class="iconicstroke-check" data-text="check">  | Like</li></button>
+          </form>
+        {% endif %}
+    </div>
+  </div>
+  <hr>
+  {{commenterror}}
+  {% for c in comment %}
+        {% if c.post_id == post_id %}
+
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="card mb-3">
+        <div class="card-header">
+          <p class="card-subtitle text-muted"><span class="font-weight-bold">{{c.author}}</span> commented on: <span class="font-weight-bold">{{c.created.strftime("%b %d, %Y")}}</span></p>
+        </div>
+        <div class="card-block">
+          <p class="card-text">{{c.comment}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <hr>
+        {% else %}
+        {% endif %}
+  {% endfor %}
+  <form method="post">
+    <div class="form-group">
+      <label>Comment:</label>
+      <textarea name="comment" class="form-control"></textarea>
+    </div>
+    <button type="submit" name="post_author" value="{{post.author}}" class="btn btn-outline-primary">Submit</button>
+  </form>
+{% endblock %}

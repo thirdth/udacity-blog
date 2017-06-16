@@ -1,0 +1,15 @@
+<!-- This template renders each post from the database -->
+<div class="card mb-3">
+  <div class="card-block pt-1">
+    <p class="card-text mb-1"><small style="font-weight: bold;">{{p.created.strftime("%b %d, %Y")}}</small></p>
+    <h4 class="card-title"><a href="/blog/{{p.key().id()}}">{{p.subject}}</a></h4>
+    <hr>
+    <p class="card-text">{{p._render_text | safe}}</p>
+  </div>
+  <div class="card-footer text-muted">
+    Author: {% if p.author %} <!--TODO: make author name link to just author posts -->
+              {{p.author}}
+            {% else %}unknown
+            {% endif %}
+  </div>
+</div>

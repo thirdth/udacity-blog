@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- This is the page that wraps around the templates -->
+<html>
+  <head>
+
+    <meta name="description" content="Portfolio project for Zack Glaser">
+    <meta name="author" content="//zackglaser.com">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta charset="utf-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#36f">
+    <!--change to _blank if you want to open links in new window-->
+    <base target="_self">
+
+    <title>Un-Travel</title>
+
+    <!--add bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--specialized css has to load after bootstrap's more general css-->
+    <link type="text/css" rel="stylesheet" href="/static/main.css" />
+
+  </head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 header-logo">
+        <h1><a href="/welcome">
+          🌎 Un|Travel
+        </a></h1>
+      </div>
+      <div class="col-sm-12 header-sign">
+        {% if user %}
+          Welcome: {{user.name}} (<a class="" href="/logout">logout</a>)
+        {% else %}
+          <a class="" href="/login">login</a>
+          |
+          <a class="" href="/signup">signup</a>
+        {% endif %}
+      </div>
+    </div>
+    <nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand logo" href="/">🌎</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">Explore Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/welcome">My Post</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog/newpost">New Post</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="row maincontent">
+      <div class="col-sm-12">
+      {% block content %}
+
+<!-- template content inserts here -->
+
+      {% endblock %}
+      </div>
+    </div>
+    <hr class="my-4">
+    <footer class="row">
+      <div class="col-sm-12 border text-center">
+        <p>© Zack Glaser 2017
+      </div>
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+
+</html>

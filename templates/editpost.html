@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+<!-- this block content gets placed into base.html -->
+{% block content %}
+      <div class-"col-sm-12">
+        <h3 class="text-center">Edit Post:</h3>
+      </div>
+      <hr>
+      <div class="col-sm-12">
+        <form method="post">
+          <div class="form-group">
+            <label>Title</label>
+            <!-- information passed to blog.py in order to call proper db -->
+            <input type="hidden" name="post_id" value="{{post_id}}" class="form-control">
+            <input type="hidden" name="author" value="{{author}}" class="form-control">
+            <input type="text" name="subject" value="{{subject}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Body</label>
+            <textarea name="content" class="form-control">{{content}}</textarea>
+          </div>
+          <p class="text-danger">{{error}}</p>
+          <div class="row">
+            <div class="col-sm-6">
+              <button type="submit" name="go" value="confirm" class="btn btn-outline-primary">Submit</button>
+              <button type="submit" name="go" value="cancel" class="btn btn-outline-warning ml-3">Cancel</button>
+            </div>
+            <div class="col-sm-6 text-right pr-4">
+              <a href="/blog/deletepost/{{post_id}}" class="text-danger font-weight-bold"><li class="iconicstroke-x active" data-text="x"> Delete Post</li></a>
+            </div>
+        </form>
+      </div>
+{% endblock %}
