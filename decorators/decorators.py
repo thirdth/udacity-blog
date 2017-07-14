@@ -30,6 +30,7 @@ def post_owner(func):
     def wrapper(self, post_id):
         key = db.Key.from_path('Post', int(post_id), parent=Utils.blog_key())
         Post = db.get(key)
+        # post = Post.get_by_id(int(post_id), parent=//..)
         currentuser = self.user.name
         author = Post.author
 

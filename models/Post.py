@@ -9,7 +9,7 @@ class Post(db.Model):
     content = db.TextProperty(required=True)
     created = db.DateTimeProperty(auto_now_add=True)
     last_modified = db.DateTimeProperty(auto_now=True)
-    author = db.REferenceProperty(User, collection_name='posts')
+    author = db.StringProperty(required=False)
 
     """
     Method renders the post.html file and passes the 'p' parameter, and places

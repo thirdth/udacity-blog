@@ -1,5 +1,4 @@
 from handlers import BlogHandler
-from decorators import login_required
 from models import User
 
 
